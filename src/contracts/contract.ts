@@ -3,6 +3,7 @@ import { balance } from './actions/read/balance';
 import { approveAllMints } from './actions/write/approveAllMints';
 import { approveMint } from './actions/write/approveMint';
 import { askMint } from './actions/write/askMint';
+import { burnTokens } from './actions/write/burnTokens';
 import { mintTokens } from './actions/write/mintTokens';
 import { transferTokens } from './actions/write/transferTokens';
 import { ContractResult, PstAction, PstResult, PstState } from './types/types';
@@ -27,6 +28,8 @@ export async function handle(state: PstState, action: PstAction): Promise<Contra
       return await balance(state, action);
       case 'askedMints':
         return await askedMints(state, action);
+        case 'burn':
+          return await burnTokens(state, action);
     default:
       throw new ContractError(`No function supplied or function not recognised: "${input.function}"`);
   }

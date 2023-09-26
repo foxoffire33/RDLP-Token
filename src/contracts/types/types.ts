@@ -29,6 +29,6 @@ export interface PstResult {
   waitingForMint?: { [key: string]: number };
 }
 
-export type PstFunction = 'transfer' | 'mint' | 'balance' | 'approveAllMints'  | 'approveMint' | 'askMint' | 'askedMints';
+export type PstFunction = 'transfer' | 'mint' | 'balance' | 'approveAllMints'  | 'approveMint' | 'askMint' | 'askedMints' | 'burn';
 
 export type ContractResult = { state: PstState } | { result: PstResult };
