@@ -2,6 +2,9 @@ export interface PstState {
   ticker: string;
   name: string;
   owner: string;
+  waitingForMint: {
+    [address: string]: number;
+  };
   balances: {
     [address: string]: number;
   };
@@ -16,14 +19,16 @@ export interface PstInput {
   function: PstFunction;
   target: string;
   qty: number;
+  address?: string
 }
 
 export interface PstResult {
   target: string;
   ticker: string;
-  balance: number;
+  balance?: number;
+  waitingForMint?: { [key: string]: number };
 }
 
-export type PstFunction = 'transfer' | 'mint' | 'balance';
+export type PstFunction = 'transfer' | 'mint' | 'balance' | 'approveAllMints'  | 'approveMint' | 'askMint' | 'askedMints';
 
 export type ContractResult = { state: PstState } | { result: PstResult };
