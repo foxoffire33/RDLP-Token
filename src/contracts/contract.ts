@@ -16,20 +16,20 @@ export async function handle(state: PstState, action: PstAction): Promise<Contra
   switch (input.function) {
     case 'mint':
       return await mintTokens(state, action);
-      case 'askMint':
-        return await askMint(state, action);
-      case 'approveMint':
-        return await approveMint(state, action);
-      case 'approveAllMints':
-        return await approveAllMints(state, action);
+    case 'askMint':
+      return await askMint(state, action);
+    case 'approveMint':
+      return await approveMint(state, action);
+    case 'approveAllMints':
+      return await approveAllMints(state, action);
+    case 'askedMints':
+      return await askedMints(state, action);
     case 'transfer':
       return await transferTokens(state, action);
     case 'balance':
       return await balance(state, action);
-      case 'askedMints':
-        return await askedMints(state, action);
-        case 'burn':
-          return await burnTokens(state, action);
+    case 'burn':
+      return await burnTokens(state, action);
     default:
       throw new ContractError(`No function supplied or function not recognised: "${input.function}"`);
   }
